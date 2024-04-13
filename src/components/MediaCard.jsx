@@ -15,7 +15,7 @@ export default function MediaCard() {
                 title="green iguana"
             />
             <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography gutterBottom variant="h5" component="div" color={"primary"}>
                     Lizard
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
