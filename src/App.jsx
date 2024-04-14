@@ -8,12 +8,8 @@ import MediaCard from "./components/MediaCard";
 function App() {
     return (
         <>
-            <Container>
-                <ResponsiveAppBar/>
-            </Container>
-            <Container disableGutters>
-                <Banner/>
-            </Container>
+            <ResponsiveAppBar/>
+            <Banner />
             <Container>
                 <Grid container>
                     {Array.from(Array(10).keys()).map((i) =>
