@@ -8,16 +8,17 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import theme from "./theme";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Banner from "./components/Banner.jsx";
 import ResponsiveAppBar from "./components/ResponsiveAppBar.jsx";
 import RestaurantDetail from "./pages/restaurant-detail.jsx";
+import Footer from "./components/Footer.jsx";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Home />
+        element: <Home/>
     },
     {
         path: "/restaurant/:slug",
@@ -30,7 +31,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <ThemeProvider theme={theme}>
             <CssBaseline/>
             <ResponsiveAppBar/>
-            <RouterProvider router={router} />
+            <RouterProvider router={router}/>
+            <Footer/>
         </ThemeProvider>
     </React.StrictMode>,
 )
