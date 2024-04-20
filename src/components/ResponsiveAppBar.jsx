@@ -59,9 +59,10 @@ export default function SearchAppBar() {
                 <Typography
                     variant="h6"
                     noWrap
-                    component="div"
+                    component="a"
+                    href="/"
                     color="primary"
-                    sx={{flexGrow: 1, display: {xs: 'none', sm: 'block'}}}
+                    sx={{flexGrow: 1, textDecoration: "none" }}
                 >
                     Restaurant Booking
                 </Typography>

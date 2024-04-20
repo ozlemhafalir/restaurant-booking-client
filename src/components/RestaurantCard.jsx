@@ -17,7 +17,7 @@ export default function RestaurantCard() {
                 title="green iguana"
             />
             <CardContent>
-                <Typography gutterBottom variant="h6" component="div" color={"primary"}>
+                <Typography gutterBottom variant="h6" component="a" href="/restaurant/slug" sx={{ textDecoration: "none" }} color={"primary"}>
                     Restaurant Name
                 </Typography>
                 <Typography gutterBottom variant="p" fontWeight={"light"} component="div" sx={{
