@@ -9,6 +9,11 @@ const theme = createTheme({
             contrastText: '#fff',
         }
     },
+    typography: {
+       h2: {
+           fontSize: '1.2',
+       }
+    },
     components: {
         MuiCard: {
             defaultProps: {
