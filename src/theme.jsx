@@ -10,9 +10,14 @@ const theme = createTheme({
         }
     },
     typography: {
-       h2: {
-           fontSize: '1.2',
-       }
+        h2: {
+            fontSize: '1.2',
+        },
+        h3: {
+            fontSize: '1.1',
+            fontWeight: "lighter",
+            lineHeight: '2.2',
+        }
     },
     components: {
         MuiCard: {
