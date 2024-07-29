@@ -13,6 +13,8 @@ import Banner from "./components/Banner.jsx";
 import ResponsiveAppBar from "./components/ResponsiveAppBar.jsx";
 import RestaurantDetail from "./pages/restaurant-detail.jsx";
 import Footer from "./components/Footer.jsx";
+import Reservations from "./pages/account/reservations.jsx";
+import Profile from "./pages/account/profile.jsx";
 
 
 const router = createBrowserRouter([
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
     {
         path: "/restaurant/:slug",
         element: <RestaurantDetail/>
+    },
+    {
+        path: "/account",
+        element: <Reservations/>
+    },
+    {
+        path: "/account/profile",
+        element: <Profile/>
     }
 ]);
 

@@ -31,7 +31,7 @@ export default function RestaurantCard() {
                     <RestaurantOutlinedIcon fontSize={"small"} sx={{marginRight: 1}}/>Cuisine
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    Lizards are a widespread group of
+                   Restaurant description
                 </Typography>
             </CardContent>
         </Card>
