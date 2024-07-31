@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Home from './home.jsx'
 import './index.css'
-import {CssBaseline, ThemeProvider} from "@mui/material";
+import {Container, CssBaseline, ThemeProvider} from "@mui/material";
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -59,7 +59,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <LocalizationProvider dateAdapter={AdapterMoment}>
                 <CssBaseline/>
                 <ResponsiveAppBar/>
-                <RouterProvider router={router}/>
+                <Container maxWidth={false} disableGutters sx={{minHeight: "70vh"}}>
+                    <RouterProvider router={router}/>
+                </Container>
                 <Footer/>
             </LocalizationProvider>
         </ThemeProvider>
