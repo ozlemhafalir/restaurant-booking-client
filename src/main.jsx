@@ -15,6 +15,11 @@ import RestaurantDetail from "./pages/restaurant-detail.jsx";
 import Footer from "./components/Footer.jsx";
 import Reservations from "./pages/account/reservations.jsx";
 import Profile from "./pages/account/profile.jsx";
+import ReservationManagement from "./pages/account/restaurant-management/reservation-management.jsx";
+import RestaurantDetailManagement from "./pages/account/restaurant-management/restaurant-detail-management.jsx";
+import RestaurantPhotosManagement from "./pages/account/restaurant-management/restaurant-photos-management.jsx";
+import {LocalizationProvider} from "@mui/x-date-pickers";
+import {AdapterMoment} from "@mui/x-date-pickers/AdapterMoment";
 
 
 const router = createBrowserRouter([
@@ -33,16 +38,30 @@ const router = createBrowserRouter([
     {
         path: "/account/profile",
         element: <Profile/>
-    }
+    },
+    {
+        path: '/account/restaurant/:id',
+        element: <ReservationManagement/>
+    },
+    {
+        path: '/account/restaurant/:id/details',
+        element: <RestaurantDetailManagement/>
+    },
+    {
+        path: '/account/restaurant/:id/photos',
+        element: <RestaurantPhotosManagement/>
+    },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <ThemeProvider theme={theme}>
-            <CssBaseline/>
-            <ResponsiveAppBar/>
-            <RouterProvider router={router}/>
-            <Footer/>
+            <LocalizationProvider dateAdapter={AdapterMoment}>
+                <CssBaseline/>
+                <ResponsiveAppBar/>
+                <RouterProvider router={router}/>
+                <Footer/>
+            </LocalizationProvider>
         </ThemeProvider>
     </React.StrictMode>,
 )
