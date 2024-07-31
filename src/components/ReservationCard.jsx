@@ -6,8 +6,6 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
-import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
-import Box from "@mui/material/Box";
 import {Menu, MenuItem} from "@mui/material";
 
 export default function ReservationCard() {

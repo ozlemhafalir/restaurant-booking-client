@@ -1,7 +1,6 @@
 import React from 'react';
 import ReservationCard from "../../components/ReservationCard.jsx";
-import {Container, Grid} from "@mui/material";
-import RestaurantCard from "../../components/RestaurantCard.jsx";
+import {Container} from "@mui/material";
 import AccountTabs from "../../components/AccountTabs.jsx";
 
 const Reservations = () => {
