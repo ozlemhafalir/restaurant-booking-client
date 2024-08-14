@@ -40,24 +40,24 @@ const RestaurantPhotosManagement = () => {
             <RestaurantManagementTabs value={2}/>
             <Grid container>
                 {itemData.map((item) => (
-                    <Grid item xs={12} md={4} lg={3} key={item.img}>
+                    <Grid item xs={12} md={4} lg={3} key={item.img} textAlign={"center"} my={1}>
                         <img
-                            srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                            srcSet={`${item.img}?w=250&h=250&fit=crop&auto=format&dpr=2 2x`}
                             src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
                             alt={item.title}
                             loading="lazy"
                         />
                     </Grid>
                 ))}
-                <Grid item xs={12} md={4} lg={3}>
+                <Grid item xs={12} md={4} lg={3} textAlign={"center"} my={1}>
                     <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
                         {({getRootProps, getInputProps}) => (
                             <section>
-                                <div {...getRootProps()}>
+                                <Box {...getRootProps()} sx={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
                                     <input {...getInputProps()} />
                                     <Box sx={{
-                                        height: 164,
-                                        width: 164,
+                                        height: 250,
+                                        width: 250,
                                         background: 'grey',
                                         display: 'flex',
                                         alignItems: 'center',
@@ -67,7 +67,7 @@ const RestaurantPhotosManagement = () => {
                                     }}>
                                         Click here or drag'n drop images
                                     </Box>
-                                </div>
+                                </Box>
                             </section>
                         )}
                     </Dropzone>
