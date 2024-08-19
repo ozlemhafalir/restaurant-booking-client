@@ -5,8 +5,9 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
+import PropTypes from "prop-types";
 
-export default function RestaurantCard() {
+export default function RestaurantCard({restaurant}) {
     return (
         <Card sx={{maxWidth: 345}}>
             <CardMedia
@@ -16,12 +17,12 @@ export default function RestaurantCard() {
             />
             <CardContent>
                 <Typography gutterBottom variant="h6" component="a" href="/restaurant/slug" sx={{ textDecoration: "none" }} color={"primary"}>
-                    Restaurant Name
+                    {restaurant ? restaurant.name : "Restaurant Name"}
                 </Typography>
                 <Typography gutterBottom variant="p" fontWeight={"light"} component="div" sx={{
                     display: "flex", alignItems: "center"
                 }}>
-                    <PlaceOutlinedIcon fontSize={"small"} sx={{marginRight: 1}}/>City
+                    <PlaceOutlinedIcon fontSize={"small"} sx={{marginRight: 1}}/>{restaurant ? restaurant.city_name : "City"}
                 </Typography>
                 <Typography gutterBottom variant="p" fontWeight={"light"} component="div" sx={{
                     display: "flex", alignItems: "center"
@@ -34,4 +35,8 @@ export default function RestaurantCard() {
             </CardContent>
         </Card>
     );
+}
+
+RestaurantCard.propTypes = {
+    restaurant: PropTypes.object
 }
