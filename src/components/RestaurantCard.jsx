@@ -16,7 +16,7 @@ export default function RestaurantCard({restaurant}) {
                 title="green iguana"
             />
             <CardContent>
-                <Typography gutterBottom variant="h6" component="a" href="/restaurant/slug" sx={{ textDecoration: "none" }} color={"primary"}>
+                <Typography gutterBottom variant="h6" component="a" href={`/restaurant/${restaurant.slug}`} sx={{ textDecoration: "none" }} color={"primary"}>
                     {restaurant ? restaurant.name : "Restaurant Name"}
                 </Typography>
                 <Typography gutterBottom variant="p" fontWeight={"light"} component="div" sx={{
@@ -27,10 +27,10 @@ export default function RestaurantCard({restaurant}) {
                 <Typography gutterBottom variant="p" fontWeight={"light"} component="div" sx={{
                     display: "flex", alignItems: "center"
                 }}>
-                    <RestaurantOutlinedIcon fontSize={"small"} sx={{marginRight: 1}}/>Cuisine
+                    <RestaurantOutlinedIcon fontSize={"small"} sx={{marginRight: 1}}/>{restaurant.cuisines.map(item => item.name).join(", ")}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                   Restaurant description
+                    {restaurant.description}
                 </Typography>
             </CardContent>
         </Card>

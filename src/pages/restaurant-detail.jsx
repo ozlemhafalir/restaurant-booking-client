@@ -6,10 +6,18 @@ import RestaurantCard from "../components/RestaurantCard.jsx";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined.js";
 import RestaurantOutlinedIcon from "@mui/icons-material/RestaurantOutlined.js";
 import Maps from "../components/Maps.jsx"
+import {useQuery} from "@tanstack/react-query";
 
 const RestaurantDetail = props => {
     const params = useParams()
-    return (
+    const { isPending, error, data } = useQuery({
+        queryKey: [`restaurant-detail-${params['slug']}`],
+        queryFn: () =>
+            fetch(`http://127.0.0.1:8000/api/restaurant/${params['slug']}`).then((res) =>
+                res.json(),
+            ),
+    })
+    return data && (
         <>
             <Container maxWidth={false} disableGutters>
                 <Carousel/>
@@ -18,14 +26,14 @@ const RestaurantDetail = props => {
                 <Grid container>
                     <Grid item sm={12} md={6}>
                         <Typography variant={'h2'} sx={{display: "flex", alignItems: "center"}}>
-                            Hello Restaurant Detail: {params['slug']}<PlaceOutlinedIcon
-                            fontSize={"small"} sx={{ml: 2, mr: 1}}/><small>City</small>
+                            {data.name}<PlaceOutlinedIcon
+                            fontSize={"small"} sx={{ml: 2, mr: 1}}/><small>{data.city_name}</small>
                         </Typography>
                         <Typography variant={'h3'} sx={{display: "flex", alignItems: "center"}}>
-                            <RestaurantOutlinedIcon fontSize={"small"} sx={{marginRight: 1}}/>Cuisine
+                            <RestaurantOutlinedIcon fontSize={"small"} sx={{marginRight: 1}}/>{data.cuisines.map(item => item.name).join(", ")}
                         </Typography>
                         <Typography variant={'p'}>
-                            Restaurant Description
+                            {data.description}
                         </Typography>
                         <Typography variant={'h3'}>
                             Make a reservation

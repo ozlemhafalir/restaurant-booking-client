@@ -7,7 +7,7 @@ import {useQuery} from "@tanstack/react-query";
 
 function Home() {
     const { isPending, error, data } = useQuery({
-        queryKey: ['repoData'],
+        queryKey: ['restaurants'],
         queryFn: () =>
             fetch('http://127.0.0.1:8000/api/restaurant/').then((res) =>
                 res.json(),

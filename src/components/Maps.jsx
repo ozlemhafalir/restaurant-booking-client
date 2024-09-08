@@ -29,7 +29,7 @@ const MapsWithGeocoding = ( ) => {
     }, [geocodingLibrary]);
 
     return (
-        <>
+        <div style={{height:"500px"}}>
             <Map
                 center={location}
                 zoom={10}
@@ -38,7 +38,7 @@ const MapsWithGeocoding = ( ) => {
             >
                 <Marker position={location} />
             </Map>
-        </>
+        </div>
     )
 }
 
