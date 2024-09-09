@@ -6,17 +6,19 @@ import Typography from '@mui/material/Typography';
 import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
 import PropTypes from "prop-types";
+import {CardActionArea} from "@mui/material";
 
 export default function RestaurantCard({restaurant}) {
     return (
         <Card sx={{maxWidth: 345}}>
+            <CardActionArea href={`/restaurant/${restaurant.slug}`}>
             <CardMedia
                 sx={{height: 200}}
-                image="https://picsum.photos/400/300"
+                image={restaurant.images && restaurant.images.length > 0 ? restaurant.images[0].image_url : "https://picsum.photos/400/300"}
                 title="green iguana"
             />
             <CardContent>
-                <Typography gutterBottom variant="h6" component="a" href={`/restaurant/${restaurant.slug}`} sx={{ textDecoration: "none" }} color={"primary"}>
+                <Typography gutterBottom variant="h6" sx={{ textDecoration: "none" }} color={"primary"}>
                     {restaurant ? restaurant.name : "Restaurant Name"}
                 </Typography>
                 <Typography gutterBottom variant="p" fontWeight={"light"} component="div" sx={{
@@ -33,6 +35,7 @@ export default function RestaurantCard({restaurant}) {
                     {restaurant.description}
                 </Typography>
             </CardContent>
+            </CardActionArea>
         </Card>
     );
 }
