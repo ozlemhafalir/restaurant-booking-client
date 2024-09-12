@@ -20,7 +20,7 @@ const RestaurantDetail = props => {
     return data && (
         <>
             <Container maxWidth={false} disableGutters>
-                <Carousel/>
+                <Carousel images={data.images}/>
             </Container>
             <Container sx={{mt: 5}}>
                 <Grid container>

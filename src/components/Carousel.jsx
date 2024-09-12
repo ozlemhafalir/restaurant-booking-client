@@ -3,27 +3,28 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Box from "@mui/material/Box";
+import PropTypes from "prop-types";
 
-export default function Carousel() {
-    const images = [
+export default function Carousel({images}) {
+    const placeholderImages = [
         {
-            label: 'San Francisco – Oakland Bay Bridge, United States',
-            imgPath:
+            id: 'San Francisco – Oakland Bay Bridge, United States',
+            image_url:
                 'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=1000&h=440&q=60',
         },
         {
-            label: 'Bird',
-            imgPath:
+            id: 'Bird',
+            image_url:
                 'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=1000&h=440&q=60',
         },
         {
-            label: 'Bali, Indonesia',
-            imgPath:
+            id: 'Bali, Indonesia',
+            image_url:
                 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1000&h=440',
         },
         {
-            label: 'Goč, Serbia',
-            imgPath:
+            id: 'Goč, Serbia',
+            image_url:
                 'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=1000&h=440&q=60',
         },
     ];
@@ -34,10 +35,23 @@ export default function Carousel() {
         slidesToShow: 1,
         slidesToScroll: 1,
     };
-    return (
+    return images.length == 1 ? (
+        <div>
+            <Box
+                component="img"
+                sx={{
+                    display: 'block',
+                    width: '100%',
+                    overflow: 'hidden',
+                }}
+                src={images[0].image_url}
+                alt={images[0].id}
+            />
+        </div>
+    ) : (
         <Slider {...settings}>
-            {images.map((step, index) => (
-                <div key={step.label}>
+            {(images.length > 0 ? images : placeholderImages).map((item, index) => (
+                <div key={item.id}>
                     <Box
                         component="img"
                         sx={{
@@ -45,11 +59,15 @@ export default function Carousel() {
                             width: '100%',
                             overflow: 'hidden',
                         }}
-                        src={step.imgPath}
-                        alt={step.label}
+                        src={item.image_url}
+                        alt={item.id}
                     />
                 </div>
             ))}
         </Slider>
     );
 }
+
+Carousel.propTypes = {
+    images: PropTypes.array,
+};

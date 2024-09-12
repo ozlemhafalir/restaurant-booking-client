@@ -54,7 +54,7 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
 
 export default function SearchAppBar() {
     return (
-        <AppBar>
+        <AppBar position={"relative"}>
             <Toolbar>
                 <Typography
                     variant="h6"
