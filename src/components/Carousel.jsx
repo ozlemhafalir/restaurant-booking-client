@@ -35,33 +35,31 @@ export default function Carousel({images}) {
         slidesToShow: 1,
         slidesToScroll: 1,
     };
+
+    const renderImage = (src, alt) => (
+        <Box
+            component="img"
+            sx={{
+                display: 'block',
+                maxHeight: '70vh',
+                width: '100%',
+                overflow: 'hidden',
+                objectFit: 'cover',
+            }}
+            src={src}
+            alt={alt}
+        />
+    );
+
     return images.length == 1 ? (
         <div>
-            <Box
-                component="img"
-                sx={{
-                    display: 'block',
-                    width: '100%',
-                    overflow: 'hidden',
-                }}
-                src={images[0].image_url}
-                alt={images[0].id}
-            />
+            {renderImage(images[0].image_url, images[0].id)}
         </div>
     ) : (
         <Slider {...settings}>
             {(images.length > 0 ? images : placeholderImages).map((item, index) => (
                 <div key={item.id}>
-                    <Box
-                        component="img"
-                        sx={{
-                            display: 'block',
-                            width: '100%',
-                            overflow: 'hidden',
-                        }}
-                        src={item.image_url}
-                        alt={item.id}
-                    />
+                    {renderImage(item.image_url, item.id)}
                 </div>
             ))}
         </Slider>
