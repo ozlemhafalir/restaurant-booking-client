@@ -3,22 +3,20 @@ import Banner from "./components/Banner.jsx";
 import React from "react";
 import RestaurantCard from "./components/RestaurantCard";
 import {useQuery} from "@tanstack/react-query";
+import api from "./api.jsx";
 
 
 function Home() {
-    const { isPending, error, data } = useQuery({
+    const {isPending, error, data} = useQuery({
         queryKey: ['restaurants'],
         queryFn: () =>
-            fetch('http://127.0.0.1:8000/api/restaurant/').then((res) =>
-                res.json(),
+            api.get('/api/restaurant/').then((res) =>
+                res.data
             ),
     })
-    console.log(isPending);
-    console.log(error);
-    console.log(data);
     return (
         <>
-            <Banner />
+            <Banner/>
             <Container>
                 <Grid container>
                     {data?.results?.map((item) =>

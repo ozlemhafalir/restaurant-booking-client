@@ -7,14 +7,15 @@ import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined.js";
 import RestaurantOutlinedIcon from "@mui/icons-material/RestaurantOutlined.js";
 import Maps from "../components/Maps.jsx"
 import {useQuery} from "@tanstack/react-query";
+import api from "../api.jsx";
 
 const RestaurantDetail = props => {
     const params = useParams()
     const { isPending, error, data } = useQuery({
         queryKey: [`restaurant-detail-${params['slug']}`],
         queryFn: () =>
-            fetch(`http://127.0.0.1:8000/api/restaurant/${params['slug']}`).then((res) =>
-                res.json(),
+            api.get(`/api/restaurant/${params['slug']}`).then((res) =>
+                res.data,
             ),
     })
     return data && (

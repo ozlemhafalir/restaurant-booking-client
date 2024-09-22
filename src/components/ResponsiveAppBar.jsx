@@ -68,7 +68,7 @@ export default function SearchAppBar() {
                 </Typography>
                 <Button sx={{
                     textTransform: "none"
-                }}>Login</Button>
+                }} href={'/auth/signin'}>Login</Button>
             </Toolbar>
         </AppBar>
     );

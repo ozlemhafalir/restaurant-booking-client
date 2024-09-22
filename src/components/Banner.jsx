@@ -1,21 +1,22 @@
 import {Container, FormControl, Grid, InputLabel, MenuItem, Select} from "@mui/material";
 import Button from "@mui/material/Button";
 import {useQuery} from "@tanstack/react-query";
+import api from "../api.jsx";
 
 const Banner = () => {
 
     const {isPending: citiesIsPending, error: citiesError, data: citiesData} = useQuery({
         queryKey: ['cities'],
         queryFn: () =>
-            fetch('http://127.0.0.1:8000/api/city/').then((res) =>
-                res.json(),
+            api.get('/api/city/').then((res) =>
+                res.data,
             ),
     })
     const {isPending: cuisinesIsPending, error: cuisinesError, data: cuisinesData} = useQuery({
         queryKey: ['cuisines'],
         queryFn: () =>
-            fetch('http://127.0.0.1:8000/api/cuisine/').then((res) =>
-                res.json(),
+            api.get('/api/cuisine/').then((res) =>
+                res.data,
             ),
     })
     return (

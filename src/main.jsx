@@ -21,6 +21,7 @@ import RestaurantPhotosManagement from "./pages/account/restaurant-management/re
 import {LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterMoment} from "@mui/x-date-pickers/AdapterMoment";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import Signin from "./pages/auth/signin.jsx";
 
 
 const router = createBrowserRouter([
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
     {
         path: '/account/restaurant/:id/photos',
         element: <RestaurantPhotosManagement/>
+    },
+    {
+        path: '/auth/signin',
+        element: <Signin/>
     },
 ]);
 

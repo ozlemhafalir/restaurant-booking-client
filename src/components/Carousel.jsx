@@ -28,7 +28,7 @@ export default function Carousel({images}) {
                 'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=1000&h=440&q=60',
         },
     ];
-    var settings = {
+    const settings = {
         dots: true,
         infinite: true,
         speed: 500,
@@ -57,7 +57,7 @@ export default function Carousel({images}) {
         </div>
     ) : (
         <Slider {...settings}>
-            {(images.length > 0 ? images : placeholderImages).map((item, index) => (
+            {(images.length > 0 ? images : placeholderImages).map((item) => (
                 <div key={item.id}>
                     {renderImage(item.image_url, item.id)}
                 </div>
