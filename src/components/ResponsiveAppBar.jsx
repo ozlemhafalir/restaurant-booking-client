@@ -9,6 +9,7 @@ import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from "@mui/material/Button";
+import {useJwt} from "react-jwt";
 
 const Search = styled('div')(({theme}) => ({
     position: 'relative',
@@ -53,6 +54,7 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
 }));
 
 export default function SearchAppBar() {
+    const {decodedToken, isExpired} = useJwt(localStorage.getItem('access'));
     return (
         <AppBar position={"relative"}>
             <Toolbar>
@@ -66,9 +68,12 @@ export default function SearchAppBar() {
                 >
                     Restaurant Booking
                 </Typography>
-                <Button sx={{
-                    textTransform: "none"
-                }} href={'/auth/signin'}>Login</Button>
+                {decodedToken ? decodedToken['user_id'] : (
+                    <Button sx={{
+                        textTransform: "none"
+                    }} href={'/auth/signin'}>Login</Button>
+                )}
+
             </Toolbar>
         </AppBar>
     );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Container, Grid, TextField} from "@mui/material";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -6,6 +6,7 @@ import {useForm} from "react-hook-form";
 import api from "../../api.jsx";
 
 const Signin = () => {
+    const [loading, setLoading] = useState(false);
     const {
         register,
         handleSubmit,
@@ -13,8 +14,14 @@ const Signin = () => {
         formState: { errors },
     } = useForm();
 
-    const onSubmit = (data) => {
-        api.post('/token/', data).then((res) => {console.log(res.data)});
+    const onSubmit = async (data) => {
+        setLoading(true);
+        await api.post('/token/', data).then((res) => {
+            const {refresh, access} = res.data;
+            localStorage.setItem('access', access);
+            localStorage.setItem('refresh', refresh);
+        });
+        setLoading(false);
     };
 
     return (
@@ -40,7 +47,7 @@ const Signin = () => {
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <Button variant="contained" type={"submit"}>Login</Button>
+                    <Button variant="contained" type={"submit"} disabled={loading}>Login</Button>
                 </Grid>
             </Grid>
             </form>
