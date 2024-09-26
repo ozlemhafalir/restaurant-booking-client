@@ -20,6 +20,7 @@ const Signin = () => {
             const {refresh, access} = res.data;
             localStorage.setItem('access', access);
             localStorage.setItem('refresh', refresh);
+            window.location.href = '/';
         });
         setLoading(false);
     };
