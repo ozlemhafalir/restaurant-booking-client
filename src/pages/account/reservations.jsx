@@ -13,7 +13,7 @@ const Reservations = () => {
                 res.data,
             ),
     })
-    console.log(data);
+
     return (
         <Container sx={{mt: 5}}>
             <AccountTabs value={0}/>
