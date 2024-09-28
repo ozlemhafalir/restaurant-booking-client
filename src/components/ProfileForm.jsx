@@ -3,6 +3,7 @@ import {Grid, TextField} from "@mui/material";
 import Button from "@mui/material/Button";
 import {useForm} from "react-hook-form";
 import PropTypes from "prop-types";
+import api from "../api.jsx";
 
 const ProfileForm = ({data}) => {
     const [loading, setLoading] = useState(false);
@@ -15,7 +16,11 @@ const ProfileForm = ({data}) => {
     });
 
     const onSubmit = async (data) => {
-
+        setLoading(true);
+        await api.patch('/api/profile/me/', data).then((res) => {
+            window.location.reload()
+        });
+        setLoading(false);
     };
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -50,7 +55,7 @@ const ProfileForm = ({data}) => {
             </Grid>
             <Grid container my={2}>
                 <Grid item xs={12}>
-                    <Button variant="contained">Save</Button>
+                    <Button variant="contained" type="submit" disabled={loading} >Save</Button>
                 </Grid>
             </Grid>
         </form>
