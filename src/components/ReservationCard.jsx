@@ -7,8 +7,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import {Menu, MenuItem} from "@mui/material";
+import PropTypes from "prop-types";
 
-export default function ReservationCard() {
+export default function ReservationCard({reservation}) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -26,8 +27,8 @@ export default function ReservationCard() {
                 title="green iguana"
             />
             <CardContent sx={{py: 0, flexGrow: 1}}>
-                <Typography gutterBottom variant="h6" component="a" href="/restaurant/slug" sx={{ textDecoration: "none" }} color={"primary"}>
-                    Restaurant Name
+                <Typography gutterBottom variant="h6" component="a" href={`/restaurant/${reservation.restaurant.slug}`} sx={{ textDecoration: "none" }} color={"primary"}>
+                    {reservation.restaurant.name}
                 </Typography>
                 <Typography gutterBottom variant="p" fontWeight={"light"} component="div" sx={{
                     display: "flex", alignItems: "center"
@@ -37,10 +38,10 @@ export default function ReservationCard() {
                 <Typography gutterBottom variant="p" fontWeight={"light"} component="div" sx={{
                     display: "flex", alignItems: "center"
                 }}>
-                    Nov. 7, 2023, 3 guests
+                    {reservation.date}, {reservation.guests} guests
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    Note:
+                    Note: {reservation.note}
                 </Typography>
             </CardContent>
             <CardActions>
@@ -68,4 +69,8 @@ export default function ReservationCard() {
             </CardActions>
         </Card>
     );
+}
+
+ReservationCard.propTypes = {
+    reservation: PropTypes.object.isRequired,
 }

@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 
 const Profile = () => {
     return (
-        <Container sx={{mt: 20}}>
+        <Container sx={{mt: 5}}>
             <AccountTabs value={1}/>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>

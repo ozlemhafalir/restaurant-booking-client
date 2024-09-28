@@ -27,22 +27,22 @@ export default function AccountMenu({username}) {
     const handleLogout = () => {
         localStorage.removeItem('access');
         localStorage.removeItem('refresh');
-        window.location.reload();
+        window.location.href = "/";
     };
 
     return (
         <React.Fragment>
-            <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
+            <Box sx={{display: 'flex', alignItems: 'center', textAlign: 'center'}}>
                 <Tooltip title="Account settings">
                     <IconButton
                         onClick={handleClick}
                         size="small"
-                        sx={{ ml: 2 }}
+                        sx={{ml: 2}}
                         aria-controls={open ? 'account-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                     >
-                        <Avatar sx={{ width: 32, height: 32 }}></Avatar>
+                        <Avatar sx={{width: 32, height: 32}}></Avatar>
                     </IconButton>
                 </Tooltip>
             </Box>
@@ -80,16 +80,16 @@ export default function AccountMenu({username}) {
                         },
                     },
                 }}
-                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                transformOrigin={{horizontal: 'right', vertical: 'top'}}
+                anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
             >
                 <MenuItem component={Link} href={'/account'}>
-                    <Avatar /> {username}
+                    <Avatar/> {username}
                 </MenuItem>
-                <Divider />
+                <Divider/>
                 <MenuItem onClick={handleLogout}>
                     <ListItemIcon>
-                        <Logout fontSize="small" />
+                        <Logout fontSize="small"/>
                     </ListItemIcon>
                     Logout
                 </MenuItem>
