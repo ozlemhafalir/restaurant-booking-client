@@ -22,7 +22,7 @@ LinkTab.propTypes = {
     selected: PropTypes.bool,
 };
 
-const RestaurantManagementTabs = ({value}) => {
+const RestaurantManagementTabs = ({value, id}) => {
     return (
         <Box sx={{ width: '100%' }} mb={2}>
             <Tabs
@@ -30,9 +30,9 @@ const RestaurantManagementTabs = ({value}) => {
                 aria-label="nav tabs example"
                 role="navigation"
             >
-                <LinkTab icon={<MenuIcon/>} iconPosition="start" label="Reservations" href="/account/restaurant/x" />
-                <LinkTab icon={<SettingsIcon/>} iconPosition="start" label="Restaurant Detail" href="/account/restaurant/x/details" />
-                <LinkTab icon={<InsertPhotoIcon/>} iconPosition="start" label="Restaurant Photos" href="/account/restaurant/x/photos" />
+                <LinkTab icon={<MenuIcon/>} iconPosition="start" label="Reservations" href={`/account/restaurant/${id}`}/>
+                <LinkTab icon={<SettingsIcon/>} iconPosition="start" label="Restaurant Detail" href={`/account/restaurant/${id}/details`} />
+                <LinkTab icon={<InsertPhotoIcon/>} iconPosition="start" label="Restaurant Photos" href={`/account/restaurant/${id}/photos`} />
             </Tabs>
         </Box>
     );
@@ -40,6 +40,7 @@ const RestaurantManagementTabs = ({value}) => {
 
 RestaurantManagementTabs.propTypes = {
     value: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
 }
 
 export default RestaurantManagementTabs;

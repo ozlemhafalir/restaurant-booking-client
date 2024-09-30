@@ -24,15 +24,17 @@ api.interceptors.response.use(
             originalRequest._retry = true;
 
             try {
-                const refreshToken = localStorage.getItem('refreshToken');
-                const response = await axios.post('/api/refresh-token', {refreshToken});
+                const refreshToken = localStorage.getItem('refresh');
+                const response = await api.post('/token/refresh/', {refreshToken});
                 const {token} = response.data;
 
-                localStorage.setItem('token', token);
+                localStorage.setItem('access', token);
 
                 originalRequest.headers.Authorization = `Bearer ${token}`;
-                return axios(originalRequest);
+                return api(originalRequest);
             } catch (error) {
+                localStorage.removeItem('access')
+                localStorage.removeItem('refresh')
                 if (window.location.href !== '/auth/signin') {
                     window.location.href = '/auth/signin';
                 }

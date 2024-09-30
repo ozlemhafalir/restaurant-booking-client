@@ -12,11 +12,13 @@ import {
     TextField
 } from "@mui/material";
 import MultiSelect from "../../../components/MultiSelect.jsx";
+import {useParams} from "react-router-dom";
 
 const RestaurantDetailManagement = () => {
+    const params = useParams();
     return (
-        <Container sx={{mt: 20}}>
-            <RestaurantManagementTabs value={1}/>
+        <Container sx={{mt: 5}}>
+            <RestaurantManagementTabs value={1} id={params['id']}/>
             <Grid container spacing={2}>
                 <Grid item xs={12} md={6}>
                     <TextField

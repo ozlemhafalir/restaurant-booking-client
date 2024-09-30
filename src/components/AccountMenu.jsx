@@ -13,10 +13,20 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import PropTypes from "prop-types";
 import {Link} from "@mui/material";
+import api from "../api.jsx";
+import {useQuery} from "@tanstack/react-query";
 
 export default function AccountMenu({username}) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
+    const {isPending, error, data} = useQuery({
+        queryKey: [`owner-restaurants-${username}`],
+        queryFn: () =>
+            api.get('/api/owner-restaurant/').then((res) =>
+                res.data,
+            ),
+    })
+    console.log(data);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -86,6 +96,13 @@ export default function AccountMenu({username}) {
                 <MenuItem component={Link} href={'/account'}>
                     <Avatar/> {username}
                 </MenuItem>
+                <Divider/>
+                {data?.results?.map((restaurant, index) => (
+                    <MenuItem component={Link} href={`/account/restaurant/${restaurant.id}/details`}>
+                        {restaurant.name}
+                    </MenuItem>
+                    )
+                )}
                 <Divider/>
                 <MenuItem onClick={handleLogout}>
                     <ListItemIcon>

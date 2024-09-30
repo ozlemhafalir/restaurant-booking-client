@@ -3,8 +3,10 @@ import RestaurantManagementTabs from "../../../components/RestaurantManagementTa
 import {Container, Grid, ImageList, ImageListItem} from "@mui/material";
 import Dropzone from "react-dropzone";
 import Box from "@mui/material/Box";
+import {useParams} from "react-router-dom";
 
 const RestaurantPhotosManagement = () => {
+    const params = useParams();
     const itemData = [
         {
             img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
@@ -36,8 +38,8 @@ const RestaurantPhotosManagement = () => {
         },
     ];
     return (
-        <Container sx={{mt: 20}}>
-            <RestaurantManagementTabs value={2}/>
+        <Container sx={{mt: 5}}>
+            <RestaurantManagementTabs value={2} id={params['id']}/>
             <Grid container>
                 {itemData.map((item) => (
                     <Grid item xs={12} md={4} lg={3} key={item.img} textAlign={"center"} my={1}>
