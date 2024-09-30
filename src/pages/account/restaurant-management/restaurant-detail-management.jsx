@@ -1,17 +1,6 @@
 import React from 'react';
 import RestaurantManagementTabs from "../../../components/RestaurantManagementTabs.jsx";
-import {
-    Container,
-    FormControl,
-    Grid,
-    InputLabel,
-    MenuItem,
-    NativeSelect,
-    OutlinedInput,
-    Select,
-    TextField
-} from "@mui/material";
-import MultiSelect from "../../../components/MultiSelect.jsx";
+import {Container} from "@mui/material";
 import {useParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
 import api from "../../../api.jsx";
@@ -26,10 +15,25 @@ const RestaurantDetailManagement = () => {
                 res.data,
             ),
     })
-    return (
+    const {isPending: citiesIsPending, error: citiesError, data: citiesData} = useQuery({
+        queryKey: ['cities'],
+        queryFn: () =>
+            api.get('/api/city/').then((res) =>
+                res.data,
+            ),
+    })
+    const {isPending: cuisinesIsPending, error: cuisinesError, data: cuisinesData} = useQuery({
+        queryKey: ['cuisines'],
+        queryFn: () =>
+            api.get('/api/cuisine/').then((res) =>
+                res.data,
+            ),
+    })
+    return data && citiesData && cuisinesData && (
         <Container sx={{mt: 5}}>
             <RestaurantManagementTabs value={1} id={params['id']}/>
-            <RestaurantManagementForm restaurant={data}/>
+            <RestaurantManagementForm restaurant={data} cities={citiesData} cuisines={cuisinesData}/>
+
         </Container>
     );
 };
