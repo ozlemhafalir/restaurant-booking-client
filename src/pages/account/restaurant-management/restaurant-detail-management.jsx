@@ -9,7 +9,7 @@ import RestaurantManagementForm from "../../../components/RestaurantManagementFo
 const RestaurantDetailManagement = () => {
     const params = useParams();
     const {isPending, error, data} = useQuery({
-        queryKey: ['profile-reservations'],
+        queryKey: [`owner-restaurant-${params['id']}`],
         queryFn: () =>
             api.get(`/api/owner-restaurant/${params['id']}/`).then((res) =>
                 res.data,
