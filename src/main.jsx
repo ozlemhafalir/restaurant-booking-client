@@ -22,6 +22,8 @@ import {LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterMoment} from "@mui/x-date-pickers/AdapterMoment";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import Signin from "./pages/auth/signin.jsx";
+import {Instagram, LinkedIn} from "@mui/icons-material";
+import RegisterRestaurant from "./pages/register-restaurant.jsx";
 
 
 const router = createBrowserRouter([
@@ -56,6 +58,10 @@ const router = createBrowserRouter([
     {
         path: '/auth/signin',
         element: <Signin/>
+    },
+    {
+        path: '/register-restaurant',
+        element: <RegisterRestaurant/>
     },
 ]);
 
