@@ -3,10 +3,9 @@ import {FormControl, Grid, InputLabel, MenuItem, Select, TextField} from "@mui/m
 import MultiSelect from "./MultiSelect.jsx";
 import PropTypes from "prop-types";
 import {useForm} from "react-hook-form";
-import api from "../api.jsx";
 import Button from "@mui/material/Button";
 
-const RestaurantManagementForm = ({restaurant, cities, cuisines}) => {
+const RestaurantRegistrationForm = ({cities, cuisines}) => {
     const [loading, setLoading] = useState(false);
     const {
         register,
@@ -14,20 +13,12 @@ const RestaurantManagementForm = ({restaurant, cities, cuisines}) => {
         getValues,
         control,
         formState: {errors},
-    } = useForm({
-        defaultValues: restaurant
-    });
+    } = useForm();
 
-    const onSubmit = async (data) => {
-        setLoading(true);
-        await api.patch(`/api/owner-restaurant/${restaurant['id']}/`, data).then((res) => {
-            window.location.reload()
-        });
-        setLoading(false);
-    }
+    const onSubmit = async (data) => {}
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-        <Grid container spacing={2}>
+        <Grid container justifyContent={"center"} alignItems={"center"}>
             <Grid item xs={12} md={6}>
                 <TextField
                     fullWidth
@@ -77,18 +68,13 @@ const RestaurantManagementForm = ({restaurant, cities, cuisines}) => {
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid item xs={12} md={6}>
-                menu
-            </Grid>
         </Grid>
         </form>
     );
 };
 
-RestaurantManagementForm.propTypes = {
-    restaurant: PropTypes.object.isRequired,
-    data: PropTypes.object.isRequired,
+RestaurantRegistrationForm.propTypes = {
     cities: PropTypes.object.isRequired,
     cuisines: PropTypes.object.isRequired
 }
-export default RestaurantManagementForm;
+export default RestaurantRegistrationForm;
