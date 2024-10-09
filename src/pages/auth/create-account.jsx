@@ -1,17 +1,15 @@
 import React, {useState} from 'react';
-import {Container, Grid, Link, TextField} from "@mui/material";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import {useForm} from "react-hook-form";
 import api from "../../api.jsx";
+import {Container, Grid, TextField} from "@mui/material";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 
-const Signin = () => {
+const CreateAccount = () => {
     const [loading, setLoading] = useState(false);
     const {
         register,
         handleSubmit,
-        watch,
-        formState: {errors},
     } = useForm();
 
     const onSubmit = async (data) => {
@@ -27,7 +25,7 @@ const Signin = () => {
 
     return (
         <Container sx={{mt: 20}}>
-            <Typography variant={"h2"} mb={2}>Signin</Typography>
+            <Typography variant={"h2"} mb={2}>Create Account</Typography>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Grid container spacing={2} direction={"column"}>
                     <Grid item xs={12} sm={6}>
@@ -42,23 +40,30 @@ const Signin = () => {
                         <TextField
                             fullWidth
                             id="outlined-disabled"
+                            label="Email"
+                            inputProps={{...register("username")}}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <TextField
+                            fullWidth
+                            id="outlined-disabled"
                             label="Password"
                             type={"password"}
                             inputProps={{...register("password")}}
                         />
                     </Grid>
-                    <Grid item xs={12} sm={6} textAlign={"right"}>
-                        <Button variant="contained" type={"submit"} disabled={loading}>Login</Button>
+                    <Grid item xs={12} sm={6}>
+                        <TextField
+                            fullWidth
+                            id="outlined-disabled"
+                            label="Confirm Password"
+                            type={"password"}
+                            inputProps={{...register("password")}}
+                        />
                     </Grid>
                     <Grid item xs={12} sm={6} textAlign={"right"}>
-                        <Button href='/auth/forgot-password' variant="text">
-                            Forgot your password?
-                        </Button>
-                    </Grid>
-                </Grid>
-                <Grid container direction={'column'} mb={2}>
-                    <Grid item xs={12} sm={6} textAlign={"right"}>
-                        <Button variant="text" type={"submit"} href='/auth/create-account'>Create new account</Button>
+                        <Button variant="contained" type={"submit"} disabled={loading}>Create Account</Button>
                     </Grid>
                 </Grid>
             </form>
@@ -66,4 +71,4 @@ const Signin = () => {
     );
 };
 
-export default Signin;
+export default CreateAccount;
