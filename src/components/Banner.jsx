@@ -21,7 +21,7 @@ const Banner = () => {
     })
     return (
         <Container sx={{
-            background: "url(https://picsum.photos/1200/500)",
+            background: "url(/banner.jpg)",
             backgroundSize: "cover",
             height: "60vh",
             position: "relative"
