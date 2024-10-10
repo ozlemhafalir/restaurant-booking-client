@@ -52,7 +52,7 @@ export default function ReservationCard({reservation}) {
                     aria-expanded={open ? 'true' : undefined}
                     onClick={handleClick}
                 >
-                    Action
+                    {reservation.status}
                 </Button>
                 <Menu
                     id="basic-menu"
@@ -64,7 +64,6 @@ export default function ReservationCard({reservation}) {
                     }}
                 >
                     <MenuItem onClick={handleClose}>Cancel</MenuItem>
-                    <MenuItem onClick={handleClose}>Confirm</MenuItem>
                 </Menu>
             </CardActions>
         </Card>
