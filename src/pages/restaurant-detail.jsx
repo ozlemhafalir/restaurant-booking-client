@@ -44,7 +44,7 @@ const RestaurantDetail = props => {
                         </Typography>
                         {
                             decodedToken ? (
-                                <ReservationForm/>
+                                <ReservationForm restaurantId={data.id}/>
                             ) : (
                                 <>
                                     <Typography variant={'subtitle1'} sx={{mt: 2}}>
