@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Grid, TextField} from "@mui/material";
+import {Grid, Snackbar, TextField} from "@mui/material";
 import PropTypes from "prop-types";
 import {useForm} from "react-hook-form";
 import Button from "@mui/material/Button";
@@ -9,6 +9,7 @@ import api from "../api.jsx";
 
 const ReservationForm = ({restaurantId}) => {
     const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState();
     const {
         register,
         handleSubmit,
@@ -20,10 +21,17 @@ const ReservationForm = ({restaurantId}) => {
         }
     );
 
+    const emptyMessage = () => {
+        setMessage(null);
+    }
+
     const onSubmit = async (data) => {
         setLoading(true);
         await api.post('/api/reservation/', data).then((res) => {
-            window.location.reload()
+            window.location.href = "/account"
+        }).catch((err) => {
+            setMessage("Error saving reservation, please try again later");
+            setLoading(false);
         });
         setLoading(false);
     }
@@ -71,6 +79,13 @@ const ReservationForm = ({restaurantId}) => {
                     </Grid>
                 </Grid>
             </Grid>
+            <Snackbar
+                open={!!message}
+                autoHideDuration={6000}
+                onClose={emptyMessage}
+                message={message}
+                color={"warning"}
+            />
         </form>
     );
 };
