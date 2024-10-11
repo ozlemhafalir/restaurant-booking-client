@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
-import {FormControl, Grid, InputLabel, MenuItem, Select, TextField} from "@mui/material";
+import {FormControl, Grid, InputLabel, MenuItem, Select, Snackbar, TextField} from "@mui/material";
 import MultiSelect from "./MultiSelect.jsx";
 import PropTypes from "prop-types";
 import {useForm} from "react-hook-form";
 import Button from "@mui/material/Button";
+import api from "../api.jsx";
 
 const RestaurantRegistrationForm = ({cities, cuisines}) => {
     const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState();
     const {
         register,
         handleSubmit,
@@ -14,8 +16,19 @@ const RestaurantRegistrationForm = ({cities, cuisines}) => {
         control,
         formState: {errors},
     } = useForm();
-
-    const onSubmit = async (data) => {}
+    const emptyMessage = () => {
+        setMessage(null);
+    }
+    const onSubmit = async (data) => {
+        setLoading(true);
+        await api.post('/registration', data).then((res) => {
+            window.location.href = "/account"
+        }).catch((err) => {
+            setMessage("Error saving registration, please try again later");
+            setLoading(false);
+        });
+        setLoading(false);
+    }
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container justifyContent={"center"} alignItems={"center"}>
@@ -69,6 +82,13 @@ const RestaurantRegistrationForm = ({cities, cuisines}) => {
                 </Grid>
             </Grid>
         </Grid>
+            <Snackbar
+                open={!!message}
+                autoHideDuration={6000}
+                onClose={emptyMessage}
+                message={message}
+                color={"warning"}
+            />
         </form>
     );
 };
