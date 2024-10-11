@@ -21,7 +21,7 @@ const RestaurantRegistrationForm = ({cities, cuisines}) => {
     }
     const onSubmit = async (data) => {
         setLoading(true);
-        await api.post('/registration', data).then((res) => {
+        await api.post('/api/register-restaurant/', data).then((res) => {
             window.location.href = "/account"
         }).catch((err) => {
             setMessage("Error saving registration, please try again later");
