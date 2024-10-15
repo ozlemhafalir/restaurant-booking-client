@@ -24,7 +24,6 @@ import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import Signin from "./pages/auth/signin.jsx";
 import {Instagram, LinkedIn} from "@mui/icons-material";
 import RegisterRestaurant from "./pages/register-restaurant.jsx";
-import ForgotPassword from "./pages/auth/forgot-password.jsx";
 import CreateAccount from "./pages/auth/create-account.jsx";
 
 
@@ -60,10 +59,6 @@ const router = createBrowserRouter([
     {
         path: '/auth/signin',
         element: <Signin/>
-    },
-    {
-        path: '/auth/forgot-password',
-        element: <ForgotPassword/>
     },
 
     {

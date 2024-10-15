@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Container, Grid, Link, TextField} from "@mui/material";
+import {Container, Grid, Link, Snackbar, TextField} from "@mui/material";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import {useForm} from "react-hook-form";
@@ -7,6 +7,7 @@ import api from "../../api.jsx";
 
 const Signin = () => {
     const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState();
     const {
         register,
         handleSubmit,
@@ -14,6 +15,9 @@ const Signin = () => {
         formState: {errors},
     } = useForm();
 
+    const emptyMessage = () => {
+        setMessage(null);
+    }
     const onSubmit = async (data) => {
         setLoading(true);
         await api.post('/token/', data).then((res) => {
@@ -21,6 +25,9 @@ const Signin = () => {
             localStorage.setItem('access', access);
             localStorage.setItem('refresh', refresh);
             window.location.href = '/';
+        }).catch((err) => {
+            setMessage("Error signing in, please try again later");
+            setLoading(false);
         });
         setLoading(false);
     };
@@ -50,17 +57,20 @@ const Signin = () => {
                     <Grid item xs={12} sm={6} textAlign={"right"}>
                         <Button variant="contained" type={"submit"} disabled={loading}>Login</Button>
                     </Grid>
-                    <Grid item xs={12} sm={6} textAlign={"right"}>
-                        <Button href='/auth/forgot-password' variant="text">
-                            Forgot your password?
-                        </Button>
-                    </Grid>
+
                 </Grid>
                 <Grid container direction={'column'} mb={2}>
                     <Grid item xs={12} sm={6} textAlign={"right"}>
                         <Button variant="text" type={"submit"} href='/auth/create-account'>Create new account</Button>
                     </Grid>
                 </Grid>
+                <Snackbar
+                    open={!!message}
+                    autoHideDuration={6000}
+                    onClose={emptyMessage}
+                    message={message}
+                    color={"warning"}
+                />
             </form>
         </Container>
     );
