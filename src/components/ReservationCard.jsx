@@ -23,7 +23,7 @@ export default function ReservationCard({reservation}) {
             <CardMedia
                 component="img"
                 sx={{height: 200, width: 200}}
-                image="https://picsum.photos/400/300"
+                image={reservation.restaurant.images && reservation.restaurant.images.length > 0 ? reservation.restaurant.images[0].image_url : "https://picsum.photos/400/300"}
                 title="green iguana"
             />
             <CardContent sx={{py: 0, flexGrow: 1}}>
