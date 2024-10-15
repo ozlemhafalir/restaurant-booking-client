@@ -18,14 +18,19 @@ const CreateAccount = () => {
     }
 
     const onSubmit = async (data) => {
+        if (data.password != data.password2) {
+            setMessage("Passwords didn't match!");
+            return;
+        }
         setLoading(true);
-        await api.post('/token/', data).then((res) => {
-            const {refresh, access} = res.data;
-            localStorage.setItem('access', access);
-            localStorage.setItem('refresh', refresh);
-            window.location.href = '/';
+        await api.post('/api/register/', data).then((res) => {
+            window.location.href = '/signin';
         }).catch((err) => {
-            setMessage("Error creating account, please try again later");
+            if (err.response?.data?.username) {
+                setMessage(`username: ${err.response.data.username[0]}`);
+            } else {
+                setMessage("Error creating account, please try again later");
+            }
             setLoading(false);
         });
         setLoading(false);
@@ -48,14 +53,6 @@ const CreateAccount = () => {
                         <TextField
                             fullWidth
                             id="outlined-disabled"
-                            label="Email"
-                            inputProps={{...register("username")}}
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <TextField
-                            fullWidth
-                            id="outlined-disabled"
                             label="Password"
                             type={"password"}
                             inputProps={{...register("password")}}
@@ -67,7 +64,7 @@ const CreateAccount = () => {
                             id="outlined-disabled"
                             label="Confirm Password"
                             type={"password"}
-                            inputProps={{...register("password")}}
+                            inputProps={{...register("password2")}}
                         />
                     </Grid>
                     <Grid item xs={12} sm={6} textAlign={"right"}>
