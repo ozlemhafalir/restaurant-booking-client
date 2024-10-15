@@ -1,16 +1,21 @@
 import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
 import api from "../../api.jsx";
-import {Container, Grid, TextField} from "@mui/material";
+import {Container, Grid, Snackbar, TextField} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
 const CreateAccount = () => {
     const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState();
     const {
         register,
         handleSubmit,
     } = useForm();
+
+    const emptyMessage = () => {
+        setMessage(null);
+    }
 
     const onSubmit = async (data) => {
         setLoading(true);
@@ -19,6 +24,9 @@ const CreateAccount = () => {
             localStorage.setItem('access', access);
             localStorage.setItem('refresh', refresh);
             window.location.href = '/';
+        }).catch((err) => {
+            setMessage("Error creating account, please try again later");
+            setLoading(false);
         });
         setLoading(false);
     };
@@ -66,6 +74,13 @@ const CreateAccount = () => {
                         <Button variant="contained" type={"submit"} disabled={loading}>Create Account</Button>
                     </Grid>
                 </Grid>
+                <Snackbar
+                    open={!!message}
+                    autoHideDuration={6000}
+                    onClose={emptyMessage}
+                    message={message}
+                    color={"warning"}
+                />
             </form>
         </Container>
     );
