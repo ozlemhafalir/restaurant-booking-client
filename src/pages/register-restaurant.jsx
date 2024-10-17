@@ -29,7 +29,7 @@ const RegisterRestaurant = () => {
         <Container sx={{mt: 5, textAlign: "center"}}>
             <Typography variant={'h2'} lineHeight={2}>Register Your Restaurant</Typography>
             <Typography variant={'subtitle1'}>You are registering your restaurant as {decodedToken['name']}</Typography>
-            <RestaurantRegistrationForm cities={citiesData} cuisines={cuisinesData}></RestaurantRegistrationForm>
+            <RestaurantSignupForm cities={citiesData} cuisines={cuisinesData}></RestaurantSignupForm>
         </Container>
     ) : (
         <Container sx={{mt: 5, textAlign: "center"}}>
@@ -37,8 +37,8 @@ const RegisterRestaurant = () => {
             <Typography variant={'subtitle1'}>Login or register to create an account to register your
                 restaurant</Typography>
             <Container sx={{mt: 2}}>
-                <Button variant="contained" size={"small"} href={'/auth/signin'}>Login</Button>
-                <Button variant="text" size={"small"} href={'/auth/signin'}>Register</Button>
+                <Button variant="contained" size={"small"} href={'/auth/login'}>Login</Button>
+                <Button variant="text" size={"small"} href={'/auth/login'}>Register</Button>
             </Container>
         </Container>
     );

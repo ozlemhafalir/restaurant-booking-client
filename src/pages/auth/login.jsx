@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import {useForm} from "react-hook-form";
 import api from "../../api.jsx";
 
-const Signin = () => {
+const Login = () => {
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState();
     const {
@@ -26,7 +26,7 @@ const Signin = () => {
             localStorage.setItem('refresh', refresh);
             window.location.href = '/';
         }).catch((err) => {
-            setMessage("Error signing in, please try again later");
+            setMessage("Error logining, please try again later");
             setLoading(false);
         });
         setLoading(false);
@@ -34,7 +34,7 @@ const Signin = () => {
 
     return (
         <Container sx={{mt: 20}}>
-            <Typography variant={"h2"} mb={2}>Signin</Typography>
+            <Typography variant={"h2"} mb={2}>Login</Typography>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Grid container spacing={2} direction={"column"}>
                     <Grid item xs={12} sm={6}>
@@ -76,4 +76,4 @@ const Signin = () => {
     );
 };
 
-export default Signin;
+export default Login;

@@ -21,7 +21,7 @@ import RestaurantPhotosManagement from "./pages/account/restaurant-management/re
 import {LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterMoment} from "@mui/x-date-pickers/AdapterMoment";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
-import Signin from "./pages/auth/signin.jsx";
+import Login from "./pages/auth/login.jsx";
 import {Instagram, LinkedIn} from "@mui/icons-material";
 import RegisterRestaurant from "./pages/register-restaurant.jsx";
 import CreateAccount from "./pages/auth/create-account.jsx";
@@ -57,8 +57,8 @@ const router = createBrowserRouter([
         element: <RestaurantPhotosManagement/>
     },
     {
-        path: '/auth/signin',
-        element: <Signin/>
+        path: '/auth/login',
+        element: <Login/>
     },
 
     {

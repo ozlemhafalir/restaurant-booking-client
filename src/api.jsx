@@ -35,8 +35,8 @@ api.interceptors.response.use(
             } catch (error) {
                 localStorage.removeItem('access')
                 localStorage.removeItem('refresh')
-                if (window.location.href !== '/auth/signin') {
-                    window.location.href = '/auth/signin';
+                if (window.location.href !== '/auth/login') {
+                    window.location.href = '/auth/login';
                 }
             }
         }

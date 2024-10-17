@@ -24,7 +24,7 @@ export default function SearchAppBar() {
                 {decodedToken ? <AccountMenu username={decodedToken['name']}/> : (
                     <Button sx={{
                         textTransform: "none"
-                    }} href={'/auth/signin'}>Login</Button>
+                    }} href={'/auth/login'}>Login</Button>
                 )}
 
             </Toolbar>
