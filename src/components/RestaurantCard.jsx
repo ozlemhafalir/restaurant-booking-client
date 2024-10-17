@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
 import PropTypes from "prop-types";
-import {CardActionArea} from "@mui/material";
+import {CardActionArea, TextField} from "@mui/material";
 
 export default function RestaurantCard({restaurant}) {
     return (
@@ -31,7 +31,13 @@ export default function RestaurantCard({restaurant}) {
                 }}>
                     <RestaurantOutlinedIcon fontSize={"small"} sx={{marginRight: 1}}/>{restaurant.cuisines.map(item => item.name).join(", ")}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.secondary" sx={{
+                    display: '-webkit-box',
+                    overflow: 'hidden',
+                    WebkitBoxOrient: 'vertical',
+                    WebkitLineClamp: 3,
+                }}
+                            variant="body1">
                     {restaurant.description}
                 </Typography>
             </CardContent>
