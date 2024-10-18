@@ -24,7 +24,7 @@ const CreateAccount = () => {
         }
         setLoading(true);
         await api.post('/api/register/', data).then((res) => {
-            window.location.href = '/login';
+            window.location.href = `/auth/login${window.location.search}`;
         }).catch((err) => {
             if (err.response?.data?.username) {
                 setMessage(`username: ${err.response.data.username[0]}`);

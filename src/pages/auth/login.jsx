@@ -4,8 +4,10 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import {useForm} from "react-hook-form";
 import api from "../../api.jsx";
+import {useSearchParams} from "react-router-dom";
 
 const Login = () => {
+    const [searchParams, setSearchParams] = useSearchParams();
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState();
     const {
@@ -24,7 +26,8 @@ const Login = () => {
             const {refresh, access} = res.data;
             localStorage.setItem('access', access);
             localStorage.setItem('refresh', refresh);
-            window.location.href = '/';
+            const nextUrl = searchParams.get('next');
+            window.location.href = nextUrl ?? '/';
         }).catch((err) => {
             setMessage("Error logining, please try again later");
             setLoading(false);

@@ -11,6 +11,7 @@ import {useJwt} from "react-jwt";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import ReservationForm from "../components/ReservationForm.jsx";
+import LoginRegisterButtons from "../components/LoginRegisterButtons.jsx";
 
 const RestaurantDetail = props => {
     const [menuOpen, setMenuOpen] = useState();
@@ -62,10 +63,7 @@ const RestaurantDetail = props => {
                                     <Typography variant={'subtitle1'} sx={{mt: 2}}>
                                         Login or register to make a reservation.
                                     </Typography>
-                                    <Box sx={{mt: 2}}>
-                                        <Button variant="contained" size={"small"} href={'/auth/signin'}>Login</Button>
-                                        <Button variant="text" size={"small"} href={'/auth/signin'}>Register</Button>
-                                    </Box>
+                                    <LoginRegisterButtons />
                                 </>
                             )
                         }

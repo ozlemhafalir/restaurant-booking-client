@@ -36,8 +36,7 @@ export default function RestaurantCard({restaurant}) {
                     overflow: 'hidden',
                     WebkitBoxOrient: 'vertical',
                     WebkitLineClamp: 3,
-                }}
-                            variant="body1">
+                }}>
                     {restaurant.description}
                 </Typography>
             </CardContent>
