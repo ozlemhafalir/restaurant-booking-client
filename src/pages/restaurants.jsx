@@ -1,16 +1,41 @@
-import React from 'react';
-import {Container} from "@mui/material";
+import React, {useMemo} from 'react';
+import {Container, Grid} from "@mui/material";
 import RestaurantSearchForm from "../components/RestaurantSearchForm.jsx";
 import {useSearchParams} from "react-router-dom";
+import {useQuery} from "@tanstack/react-query";
+import api from "../api.jsx";
+import RestaurantCard from "../components/RestaurantCard.jsx";
 
 const Restaurants = () => {
     const [searchParams, setSearchParams] = useSearchParams();
+    const selectedCity = useMemo(()=>searchParams.get('city'), [searchParams]);
+    const selectedCuisine = useMemo(()=>searchParams.get('cuisine'), [searchParams]);
+    const apiQueryString = useMemo(() => {
+        const selectedCuisineQueryString = selectedCuisine ? `cuisines=${selectedCuisine}` : null;
+        const selectedCityQueryString = selectedCity ? `city=${selectedCity}` : null;
+        return [selectedCityQueryString, selectedCuisineQueryString].filter(value => value).join('&');
+    }, [selectedCity, selectedCuisine])
+
+    const {isPending, error, data} = useQuery({
+        queryKey: [],
+        queryFn: () =>
+            api.get(`/api/restaurant/?${apiQueryString}`).then((res) =>
+                res.data
+            ),
+    })
     return (
         <Container sx={{mt: 5}}>
             <RestaurantSearchForm
-                selectedCity={searchParams.get('city')}
-                selectedCuisine={searchParams.get('cuisine')}
+                selectedCity={selectedCity}
+                selectedCuisine={selectedCuisine}
             />
+            <Grid container sx={{mt: 3}}>
+                {data?.results?.map((item) =>
+                    <Grid item key={item.id} sm={3} md={3}>
+                        <RestaurantCard restaurant={item}/>
+                    </Grid>
+                )}
+            </Grid>
         </Container>
     );
 };
