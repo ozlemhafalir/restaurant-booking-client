@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import {Menu, MenuItem} from "@mui/material";
 import PropTypes from "prop-types";
+import api from "../api.jsx";
 
 export default function ReservationCard({reservation}) {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -15,7 +16,12 @@ export default function ReservationCard({reservation}) {
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
-    const handleClose = () => {
+    const handleClose = async () => {
+        await api.patch(`/api/profile-reservation/${reservation.id}/`, {
+            status: 'cancelled'
+        }).then((res) => {
+            window.location.reload()
+        });
         setAnchorEl(null);
     };
     return (

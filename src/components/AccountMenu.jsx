@@ -23,7 +23,6 @@ export default function AccountMenu({username}) {
                 res.data,
             ),
     })
-    console.log(data);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -95,7 +94,7 @@ export default function AccountMenu({username}) {
                 </MenuItem>
                 <Divider/>
                 {data?.results?.map((restaurant, index) => (
-                    <MenuItem component={Link} href={`/account/restaurant/${restaurant.id}/details`}>
+                    <MenuItem key={index} component={Link} href={`/account/restaurant/${restaurant.id}/details`}>
                         {restaurant.name}
                     </MenuItem>
                     )

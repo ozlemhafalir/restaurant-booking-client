@@ -22,7 +22,7 @@ const theme = createTheme({
     components: {
         MuiCard: {
             defaultProps: {
-                elevation: false
+                elevation: 0
             },
             styleOverrides: {
                 root: {
