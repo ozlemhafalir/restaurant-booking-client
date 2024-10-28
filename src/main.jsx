@@ -25,6 +25,7 @@ import Login from "./pages/auth/login.jsx";
 import {Instagram, LinkedIn} from "@mui/icons-material";
 import RegisterRestaurant from "./pages/register-restaurant.jsx";
 import CreateAccount from "./pages/auth/create-account.jsx";
+import Restaurants from "./pages/restaurants.jsx";
 
 
 const router = createBrowserRouter([
@@ -59,6 +60,11 @@ const router = createBrowserRouter([
     {
         path: '/auth/login',
         element: <Login/>
+    },
+
+    {
+        path: '/restaurants',
+        element: <Restaurants/>
     },
 
     {
