@@ -69,7 +69,10 @@ const RestaurantDetail = props => {
                         }
                     </Grid>
                     <Grid item sm={12} md={6}>
-                        <Maps/>
+                        <Maps address={data.address}/>
+                        <Typography variant={'body2'} sx={{my: 1}}>
+                            {data.address}
+                        </Typography>
                     </Grid>
                 </Grid>
                 <Dialog
