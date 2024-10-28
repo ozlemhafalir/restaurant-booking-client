@@ -32,19 +32,20 @@ const Banner = () => {
                 left: 0,
                 right: 0,
             }}>
+                <form method="GET" action="/restaurants">
                 <Grid item sx={{
                     display: "flex",
                     justifyContent: "center"
                 }}>
                     <FormControl sx={{minWidth: 250}} size="small">
-                        <InputLabel id="demo-simple-select-label">City</InputLabel>
+                        <InputLabel id="label-city">City</InputLabel>
                         <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
+                            labelId="label-city"
                             label="City"
                             sx={{
                                 backgroundColor: "white",
                             }}
+                            name="city"
                         >
                             {citiesData && citiesData.results.map(item => (
                                     <MenuItem key={item.id} value={item.id}>{item.name}</MenuItem>
@@ -53,14 +54,14 @@ const Banner = () => {
                         </Select>
                     </FormControl>
                     <FormControl sx={{minWidth: 250}} size="small">
-                        <InputLabel id="demo-simple-select-label">Cuisine</InputLabel>
+                        <InputLabel id="label-cuisine">Cuisine</InputLabel>
                         <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
+                            labelId="label-cuisine"
                             label="Cuisine"
                             sx={{
                                 backgroundColor: "white",
                             }}
+                            name="cuisine"
                         >
                             {cuisinesData && cuisinesData.results.map(item => (
                                     <MenuItem key={item.id} value={item.id}>{item.name}</MenuItem>
@@ -68,8 +69,9 @@ const Banner = () => {
                             )}
                         </Select>
                     </FormControl>
-                    <Button variant="contained" color={"primary"}>Search</Button>
+                    <Button variant="contained" color={"primary"} type={"submit"}>Search</Button>
                 </Grid>
+                </form>
             </Container>
         </Container>
     );
