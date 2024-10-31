@@ -33,7 +33,6 @@ const RestaurantDetailManagement = () => {
         <Container sx={{mt: 5}}>
             <RestaurantManagementTabs value={1} id={params['id']}/>
             <RestaurantManagementForm restaurant={data} cities={citiesData} cuisines={cuisinesData}/>
-
         </Container>
     );
 };
