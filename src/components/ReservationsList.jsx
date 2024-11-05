@@ -18,26 +18,33 @@ const columns = [
 
 export default function ReservationsList() {
     const params = useParams();
-    const {isPending, error, data} = useQuery({
+    const [page, setPage] = useState(1)
+    const {isPending, error, data, refetch} = useQuery({
         queryKey: [`owner-restaurant-reservations-${params['id']}`],
         queryFn: () =>
-            api.get(`/api/owner-restaurant/${params['id']}/reservation/`).then((res) =>
+            api.get(`/api/owner-restaurant/${params['id']}/reservation/?page=${page}`).then((res) =>
                 res.data,
             ),
     })
-    return (
+    useEffect(() => { refetch() }, [page])
+    const handlePaginationChange = (model) => {
+        setPage(model.page+1)
+    }
+    return data && (
         <div style={{ height: 400, width: '100%' }}>
             <DataGrid
-                rows={data?.results}
+                rows={data.results}
                 columns={columns}
                 loading={isPending}
                 initialState={{
                     pagination: {
-                        paginationModel: { page: 0, pageSize: 5 },
+                        paginationModel: { page: page - 1, pageSize: 5 },
+                        rowCount: data.count
                     },
                 }}
+                onPaginationModelChange={handlePaginationChange}
                 pageSizeOptions={[5, 10]}
-                checkboxSelection
+                paginationMode={"server"}
             />
         </div>
     );
