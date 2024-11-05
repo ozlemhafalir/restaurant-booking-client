@@ -94,7 +94,7 @@ export default function AccountMenu({username}) {
                 </MenuItem>
                 <Divider/>
                 {data?.results?.map((restaurant, index) => (
-                    <MenuItem key={index} component={Link} href={`/account/restaurant/${restaurant.id}/details`}>
+                    <MenuItem key={index} component={Link} href={`/account/restaurant/${restaurant.id}/`}>
                         {restaurant.name}
                     </MenuItem>
                     )
