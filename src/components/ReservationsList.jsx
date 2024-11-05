@@ -43,7 +43,6 @@ export default function ReservationsList() {
                     },
                 }}
                 onPaginationModelChange={handlePaginationChange}
-                pageSizeOptions={[5, 10]}
                 paginationMode={"server"}
             />
         </div>
