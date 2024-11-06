@@ -13,6 +13,7 @@ const ReservationForm = ({restaurantId}) => {
     const {
         register,
         handleSubmit,
+        setValue,
         formState: {errors},
     } = useForm({
             defaultValues: {
@@ -35,6 +36,11 @@ const ReservationForm = ({restaurantId}) => {
         });
         setLoading(false);
     }
+
+    const handleDateChange = (value) => {
+        setValue('date' , value.format('YYYY-MM-DD'));
+    }
+
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Grid container>
@@ -52,6 +58,7 @@ const ReservationForm = ({restaurantId}) => {
                         id="outlined-required"
                         label="Date"
                         format={"YYYY-MM-DD"}
+                        onChange={handleDateChange}
                     />
                     <TextField
                         fullWidth
