@@ -7,11 +7,12 @@ import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
 import PropTypes from "prop-types";
 import {CardActionArea, TextField} from "@mui/material";
+import {Link} from "react-router-dom";
 
 export default function RestaurantCard({restaurant}) {
     return (
         <Card sx={{maxWidth: 345}}>
-            <CardActionArea href={`/restaurant/${restaurant.slug}`}>
+            <CardActionArea component={Link} to={`/restaurant/${restaurant.slug}`}>
             <CardMedia
                 sx={{height: 200}}
                 image={restaurant.images && restaurant.images.length > 0 ? restaurant.images[0].image_url : "https://picsum.photos/400/300"}

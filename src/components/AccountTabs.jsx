@@ -2,23 +2,10 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
 import MenuIcon from '@mui/icons-material/Menu';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import LinkTab from "./LinkTab.jsx";
 
-function LinkTab(props) {
-    return (
-        <Tab
-            component="a"
-            aria-current={props.selected && 'page'}
-            {...props}
-        />
-    );
-}
-
-LinkTab.propTypes = {
-    selected: PropTypes.bool,
-};
 
 const AccountTabs = ({value}) => {
     return (
@@ -28,8 +15,8 @@ const AccountTabs = ({value}) => {
                 aria-label="nav tabs example"
                 role="navigation"
             >
-                <LinkTab icon={<MenuIcon/>} iconPosition="start" label="Reservations" href="/account" />
-                <LinkTab icon={<PersonOutlineIcon/>} iconPosition="start" label="Profile" href="/account/profile" />
+                <LinkTab icon={<MenuIcon/>} iconPosition="start" label="Reservations" to="/account" />
+                <LinkTab icon={<PersonOutlineIcon/>} iconPosition="start" label="Profile" to="/account/profile" />
             </Tabs>
         </Box>
     );
