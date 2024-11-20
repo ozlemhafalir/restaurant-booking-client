@@ -1,11 +1,11 @@
 import React from 'react';
-import {FormControl, Grid, InputLabel, MenuItem, Select} from "@mui/material";
+import {FormControl, Grid, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import Button from "@mui/material/Button";
 import {useQuery} from "@tanstack/react-query";
 import api from "../api.jsx";
 import PropTypes from "prop-types";
 
-const RestaurantSearchForm = ({selectedCity, selectedCuisine}) => {
+const RestaurantSearchForm = ({selectedCity, selectedCuisine, searchName}) => {
     const {isPending: citiesIsPending, error: citiesError, data: citiesData} = useQuery({
         queryKey: ['cities'],
         queryFn: () =>
@@ -24,9 +24,20 @@ const RestaurantSearchForm = ({selectedCity, selectedCuisine}) => {
         <form method="GET" action="/restaurants">
             <Grid item sx={{
                 display: "flex",
+                flexDirection: { xs: "column", sm: "column", md: "row" },
                 justifyContent: "center"
             }}>
-                <FormControl sx={{minWidth: 250}} size="small">
+
+                    <TextField
+                        sx={{backgroundColor: "white", minWidth: 220}}
+                        id="outlined-required"
+                        label="Restaurant Name"
+                        size={"small"}
+                        name={"search"}
+                        defaultValue={searchName}
+                    />
+
+                <FormControl sx={{minWidth: 220}} size="small">
                     <InputLabel id="label-city">City</InputLabel>
                     <Select
                         labelId="label-city"
@@ -43,7 +54,7 @@ const RestaurantSearchForm = ({selectedCity, selectedCuisine}) => {
                         )}
                     </Select>
                 </FormControl>
-                <FormControl sx={{minWidth: 250}} size="small">
+                <FormControl sx={{minWidth: 220}} size="small">
                     <InputLabel id="label-cuisine">Cuisine</InputLabel>
                     <Select
                         labelId="label-cuisine"
@@ -69,6 +80,7 @@ const RestaurantSearchForm = ({selectedCity, selectedCuisine}) => {
 RestaurantSearchForm.propTypes = {
     selectedCity: PropTypes.number,
     selectedCuisine: PropTypes.number,
+    searchName: PropTypes.string,
 };
 
 export default RestaurantSearchForm;

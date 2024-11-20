@@ -93,7 +93,7 @@ export default function ReservationsList() {
                 loading={isPending}
                 initialState={{
                     pagination: {
-                        paginationModel: {page: page - 1, pageSize: 5},
+                        paginationModel: {page: page - 1, pageSize: 10},
                         rowCount: data.count
                     },
                 }}
