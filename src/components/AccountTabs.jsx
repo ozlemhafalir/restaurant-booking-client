@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import MenuIcon from '@mui/icons-material/Menu';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 import LinkTab from "./LinkTab.jsx";
 
 
@@ -17,6 +18,7 @@ const AccountTabs = ({value}) => {
             >
                 <LinkTab icon={<MenuIcon/>} iconPosition="start" label="Reservations" to="/account" />
                 <LinkTab icon={<PersonOutlineIcon/>} iconPosition="start" label="Profile" to="/account/profile" />
+                <LinkTab icon={<MenuBookIcon/>} iconPosition="start" label="My Restaurants" to="/account/my-restaurants" />
             </Tabs>
         </Box>
     );

@@ -24,6 +24,7 @@ import Login from "./pages/auth/login.jsx";
 import RegisterRestaurant from "./pages/register-restaurant.jsx";
 import CreateAccount from "./pages/auth/create-account.jsx";
 import Restaurants from "./pages/restaurants.jsx";
+import MyRestaurants from "./pages/account/my-restaurants.jsx";
 
 
 const router = createBrowserRouter([
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
     {
         path: '/restaurants',
         element: <Restaurants/>
+    },
+    {
+        path: '/account/my-restaurants',
+        element: <MyRestaurants/>
     },
 
     {

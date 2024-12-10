@@ -16,13 +16,6 @@ import {useQuery} from "@tanstack/react-query";
 export default function AccountMenu({username}) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
-    const {isPending, error, data} = useQuery({
-        queryKey: [`owner-restaurants-${username}`],
-        queryFn: () =>
-            api.get('/api/owner-restaurant/').then((res) =>
-                res.data,
-            ),
-    })
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -93,12 +86,11 @@ export default function AccountMenu({username}) {
                     <Avatar/> {username}
                 </MenuItem>
                 <Divider/>
-                {data?.results?.map((restaurant, index) => (
-                    <MenuItem key={index} component={Link} href={`/account/restaurant/${restaurant.id}/`}>
-                        {restaurant.name}
-                    </MenuItem>
-                    )
-                )}
+                <MenuItem component={Link} href={'/account'}> Reservations</MenuItem>
+                <Divider/>
+                <MenuItem component={Link} href={'/account/profile'}> Profile</MenuItem>
+                <Divider/>
+                <MenuItem component={Link} href={'/account/my-restaurants'}>My Restaurants</MenuItem>
                 <Divider/>
                 <MenuItem onClick={handleLogout}>
                     <ListItemIcon>
