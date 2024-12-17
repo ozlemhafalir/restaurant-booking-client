@@ -72,13 +72,13 @@ const RestaurantManagementForm = ({restaurant, cities, cuisines}) => {
                             inputProps={{...register("city")}}
                             defaultValue={getValues("city")}
                         >
-                            {cities && cities.results.map(item => (
+                            {cities.map(item => (
                                     <MenuItem key={item.id} value={item.id}>{item.name}</MenuItem>
                                 )
                             )}
                         </Select>
                     </FormControl>
-                    <MultiSelect items={cuisines.results} label='Cuisines' control={control}/>
+                    <MultiSelect items={cuisines} label='Cuisines' control={control}/>
                 </Grid>
                 <Grid item xs={12} md={6}>
                     {watchMenu != "image/upload/placeholder" && (
@@ -118,7 +118,7 @@ const RestaurantManagementForm = ({restaurant, cities, cuisines}) => {
 
 RestaurantManagementForm.propTypes = {
     restaurant: PropTypes.object.isRequired,
-    cities: PropTypes.object.isRequired,
-    cuisines: PropTypes.object.isRequired
+    cities: PropTypes.array.isRequired,
+    cuisines: PropTypes.array.isRequired
 }
 export default RestaurantManagementForm;

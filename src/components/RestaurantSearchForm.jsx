@@ -48,7 +48,7 @@ const RestaurantSearchForm = ({selectedCity, selectedCuisine, searchName}) => {
                         name="city"
                         defaultValue={selectedCity}
                     >
-                        {citiesData && citiesData.results.map(item => (
+                        {citiesData && citiesData.map(item => (
                                 <MenuItem key={item.id} value={item.id}>{item.name}</MenuItem>
                             )
                         )}
@@ -65,7 +65,7 @@ const RestaurantSearchForm = ({selectedCity, selectedCuisine, searchName}) => {
                         name="cuisine"
                         defaultValue={selectedCuisine}
                     >
-                        {cuisinesData && cuisinesData.results.map(item => (
+                        {cuisinesData && cuisinesData.map(item => (
                                 <MenuItem key={item.id} value={item.id}>{item.name}</MenuItem>
                             )
                         )}

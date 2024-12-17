@@ -16,7 +16,8 @@ export default function MultiSelect({items, label, control}) {
                 control={control}
                 render={({field: {onChange, value}}) => {
                     const handleChange = (e) => {
-                        onChange(e.target.value);
+                        const newValues = items.filter(i => e.target.value.includes(i.id))
+                        onChange(newValues);
                     }
                     return (
                         <FormControl sx={{my: 1}} fullWidth>
@@ -26,7 +27,7 @@ export default function MultiSelect({items, label, control}) {
                                 id="demo-multiple-name"
                                 multiple
                                 onChange={handleChange}
-                                defaultValue={value || []}
+                                value={value?.map(v=> v.id) || []}
                                 input={<OutlinedInput label={label}/>}
                             >
                                 {items.map((item, i) => (
