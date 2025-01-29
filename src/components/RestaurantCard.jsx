@@ -15,7 +15,9 @@ export default function RestaurantCard({restaurant}) {
             <CardActionArea component={Link} to={`/restaurant/${restaurant.slug}`}>
             <CardMedia
                 sx={{height: 200}}
-                image={restaurant.images && restaurant.images.length > 0 ? restaurant.images[0].image_url : "https://picsum.photos/400/300"}
+                component="img"
+                loading="lazy"
+                image={restaurant.images && restaurant.images.length > 0 ? restaurant.images[0].thumbnail_url : "https://picsum.photos/400/300"}
                 title="green iguana"
             />
             <CardContent>
