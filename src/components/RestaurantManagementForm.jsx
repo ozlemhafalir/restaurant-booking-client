@@ -6,7 +6,7 @@ import {useForm} from "react-hook-form";
 import api from "../api.jsx";
 import Button from "@mui/material/Button";
 import {CloudUpload} from "@mui/icons-material";
-import VisiuallyHiddenInput from "./VisiuallyHiddenInput.jsx";
+import VisuallyHiddenInput from "./VisuallyHiddenInput.jsx";
 import Box from "@mui/material/Box";
 
 const RestaurantManagementForm = ({restaurant, cities, cuisines}) => {
@@ -96,7 +96,7 @@ const RestaurantManagementForm = ({restaurant, cities, cuisines}) => {
                         startIcon={<CloudUpload/>}
                     >
                         Upload files
-                        <VisiuallyHiddenInput
+                        <VisuallyHiddenInput
                             type="file"
                             onChange={(event) => {
                                 setValue('menu', event.target.files[0]);

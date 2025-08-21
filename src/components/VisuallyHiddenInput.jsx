@@ -1,7 +1,7 @@
 import React from 'react';
 import {styled} from "@mui/material";
 
-const VisiuallyHiddenInput = styled('input')({
+const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
     clipPath: 'inset(50%)',
     height: 1,
@@ -13,4 +13,4 @@ const VisiuallyHiddenInput = styled('input')({
     width: 1,
 });
 
-export default VisiuallyHiddenInput;
+export default VisuallyHiddenInput;

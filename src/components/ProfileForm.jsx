@@ -58,7 +58,7 @@ const ProfileForm = ({data}) => {
                     <Button variant="contained" type="submit" disabled={loading} >Save</Button>
                 </Grid>
             </Grid>
-        </form>
+        </form> 
     );
 };
 

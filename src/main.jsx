@@ -25,6 +25,7 @@ import RegisterRestaurant from "./pages/register-restaurant.jsx";
 import CreateAccount from "./pages/auth/create-account.jsx";
 import Restaurants from "./pages/restaurants.jsx";
 import MyRestaurants from "./pages/account/my-restaurants.jsx";
+import AnalyticsProvider from "./providers/AnalyticsProvider.jsx";
 
 
 const router = createBrowserRouter([
@@ -84,6 +85,7 @@ const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
+        <AnalyticsProvider />
         <QueryClientProvider client={queryClient}>
             <ThemeProvider theme={theme}>
                 <LocalizationProvider dateAdapter={AdapterMoment}>

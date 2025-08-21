@@ -10,7 +10,7 @@ const Maps = ({address}) => {
 
     );
 };
-Maps.propType = {
+Maps.propTypes = {
     address: PropTypes.string
 }
 const MapsWithGeocoding = ({address} ) => {
@@ -44,7 +44,7 @@ const MapsWithGeocoding = ({address} ) => {
         </div>
     ) : null;
 }
-MapsWithGeocoding.propType = {
+MapsWithGeocoding.propTypes = {
     address: PropTypes.string
 }
 export default Maps;

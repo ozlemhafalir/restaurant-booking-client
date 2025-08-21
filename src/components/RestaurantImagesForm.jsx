@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {Grid, ImageList, ImageListItem} from "@mui/material";
 import Box from "@mui/material/Box";
 import {CloudUpload, Delete} from "@mui/icons-material";
-import VisiuallyHiddenInput from "./VisiuallyHiddenInput.jsx";
+import VisuallyHiddenInput from "./VisuallyHiddenInput.jsx";
 import Button from "@mui/material/Button";
 import {useForm} from "react-hook-form";
 import api from "../api.jsx";
@@ -88,7 +88,7 @@ const RestaurantImagesForm = ({restaurant}) => {
                         disabled={loading}
                     >
                         Upload more...
-                        <VisiuallyHiddenInput
+                        <VisuallyHiddenInput
                             type="file"
                             onChange={handleUploadMore}
                             multiple
