@@ -11,7 +11,7 @@ const RestaurantList = ({initialUrl}) => {
     const [nextUrl, setNextUrl] = useState(initialUrl);
     const [results, setResults] = useState([]);
     const {isPending, error, data, refetch, isLoading, isRefetching} = useQuery({
-        queryKey: ['restaurants'],
+        queryKey: ['restaurants', initialUrl],
         queryFn: () =>
             api.get(nextUrl).then((res) =>
                 res.data
